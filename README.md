@@ -79,7 +79,7 @@ server {
 docker network create internal
 ```
 
-![docker_network_create_internal](image_docker_network_create_internal.png)
+![docker_network_create_internal](images/image_docker_network_create_internal.png)
 
 Результат
 
