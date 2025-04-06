@@ -4,7 +4,7 @@ IWNO6: Взаимодействие контейнеров
 
 ## Цель работы
 
-Выполнив данную работу студент сможет управлять взаимодействием нескольких контейнеров.
+Выполнив данную работу смогу управлять взаимодействием нескольких контейнеров.
 
 ## Задание
 
@@ -20,11 +20,11 @@ IWNO6: Взаимодействие контейнеров
 
 Создаю репозиторий containers06 и скопирую его себе на компьютер.
 
-![alt text](images/image_git_clone.png)
+![git_clone](images/image_git_clone.png)
 
 В директории containers06 создаю директорию `mounts/site`. В данную директорию перепишу сайт на php, созданный в рамках предмета по php.
 
-![alt text](images/image_mounts_site.png)
+![mounts_site](images/image_mounts_site.png)
 
 Создаю файл `.gitignore` в корне проекта и добавляю в него строки:
 
@@ -33,7 +33,7 @@ IWNO6: Взаимодействие контейнеров
 mounts/site/*
 ```
 
-![alt text](images/image_gitignore.png)
+![gitignore](images/image_gitignore.png)
 
 Создаю в директории `containers06` файл `nginx/default.conf` со следующим содержимым:
 
@@ -69,15 +69,17 @@ server {
 }
 ```
 
-![alt text](images/image_nginx_default_conf.png)
+![nginx_default_conf](images/image_nginx_default_conf.png)
 
-## Запуск и тестирование
+## Запуск
 
 Создаю сеть `internal` для контейнеров.
 
 ```bash
 docker network create internal
 ```
+
+![docker_network_create_internal](image_docker_network_create_internal.png)
 
 Результат
 
@@ -101,7 +103,7 @@ docker network ls
 docker run -d --name backend --network internal -v ${PWD}/mounts/site:/var/www/html php:7.4-fpm
 ```
 
-![alt text](images/image_docker_backend.png)
+![image_docker_backend](images/image_docker_backend.png)
 
 Запуск контейнер frontend (Nginx)
 
@@ -119,21 +121,25 @@ docker run -d --name backend --network internal -v ${PWD}/mounts/site:/var/www/h
 docker run -d --name frontend --network internal -v ${PWD}/mounts/site:/var/www/html -v ${PWD}/nginx/default.conf:/etc/nginx/conf.d/default.conf -p 8080:80 nginx:1.23-alpine
 ```
 
-![alt text](images/image_docker_frontend.png)
+![image_docker_frontend](images/image_docker_frontend.png)
 
-Тестирование
+контейнеры в графическом интерфейсе Docker
+
+![containers_back_end_front_end](images/image_containers_back_end_front_end.png)
+
+## Тестирование
 
 Проверка состояния контейнеров.
 
-```
+```bash
 docker ps
 ```
 
-![alt text](images/image_docker_ps.png)
+![docker_ps](images/image_docker_ps.png)
 
 Проверяю работу сайта в браузере, перейдя по адресу http://localhost:8080.
 
-![alt text](images/Screenshot_site.png)
+![site](images/Screenshot_site.png)
 
 ## Вопросы:
 
