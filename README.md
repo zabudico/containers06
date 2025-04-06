@@ -37,6 +37,10 @@ mounts/site/*
 
 Создаю в директории `containers06` файл `nginx/default.conf` со следующим содержимым:
 
+![nginx_default_conf](images/image_nginx_default_conf.png)
+
+Дорабатываю код, чтобы адоптировать под свой проект.
+
 ```bash
 server {
     listen 80;
@@ -68,8 +72,6 @@ server {
     }
 }
 ```
-
-![nginx_default_conf](images/image_nginx_default_conf.png)
 
 ## Запуск
 
